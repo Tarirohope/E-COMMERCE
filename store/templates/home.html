@@ -22,8 +22,8 @@
                 
                     {% for product in products%}
                     {% if product.is_sale %}
-                    <div class="col mb-5">
-                        <div class="card h-80">
+                    <div class="col-sm-4 mb-5">
+                        <div class="card h-50">
                            <div class = "badge bg-primary text-white position-absolute" style="top:0.5rem; right:0.5rem">Sale</div>
                             <!-- Product image-->
                             <img class="card-img-top" src="{{ product.image.url }}" alt="..." />

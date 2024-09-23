@@ -43,8 +43,8 @@ class Cart():
           if product.id == key:
             if product.is_sale:
               total = total + (product.sale_price * value)
-          else:
-            total = total + (product.price * value)
+            else:
+              total = total + (product.price * value)
             
     return total
     

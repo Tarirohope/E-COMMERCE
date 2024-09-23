@@ -28,7 +28,7 @@ class Cart():
     self.session.modified = True
     
     
-  def total(self):
+  def cart_total(self):
     product_ids = self.cart.keys()
     #lookup those keys in our database
     products = Product.objects.filter(id__in=product_ids)

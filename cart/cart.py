@@ -40,7 +40,7 @@ class Cart():
         #converting key into string so that we can do math
         key = int(key)
         for product in products:
-          if product == key:
+          if product_ids == key:
             if product.is_sale:
               total = total + (product.sale_price * value)
           else:

@@ -27,6 +27,27 @@ class Cart():
       self.cart[product_id] = int(product_qty)
     self.session.modified = True
     
+    
+  def total(self):
+    product_ids = self.cart.keys()
+    #lookup those keys in our database
+    products = Product.objects.filter(id_in=product_ids)
+    #get quantities
+    quantities = self.cart
+    #lets start counting at 0
+    total = 0
+    for key, value in quantities.items():
+        #converting key into string so that we can do math
+        key = int(key)
+        for product in products:
+          if product.id == key:
+            if product.is_sale:
+              total = total + (product.sale_price * value)
+          else:
+            total = total + (product.price * value)
+            
+    return total
+    
   def __len__(self):
     return len(self.cart)
   

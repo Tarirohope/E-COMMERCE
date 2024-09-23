@@ -31,7 +31,7 @@ class Cart():
   def total(self):
     product_ids = self.cart.keys()
     #lookup those keys in our database
-    products = Product.objects.filter(id_in=product_ids)
+    products = Product.objects.filter(id__in=product_ids)
     #get quantities
     quantities = self.cart
     #lets start counting at 0

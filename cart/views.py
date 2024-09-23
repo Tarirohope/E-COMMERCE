@@ -36,8 +36,8 @@ def cart_delete(request):
     cart.delete(product=product_id)
     
 
-  response = JsonResponse({'product' :product_id})
-  return response
+    response = JsonResponse({'product':product_id})
+    return response
 
 
 def cart_update(request):
@@ -47,6 +47,6 @@ def cart_update(request):
     product_qty = int(request.POST.get('product_qty'))
   
   cart.update(product=product_id, quantity=product_qty)
-  response = JsonResponse({'qty' :product_qty})
+  response = JsonResponse({'qty':product_qty})
   return response
   #return redirect('cart_summary')

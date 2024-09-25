@@ -18,10 +18,10 @@ def update_user(request):
       messages.success(request, "User has been updated")
       return redirect('home')
     
-    return render('update_user.html', {'user_form':user_form})
+    return render(request, 'update_user.html', {'user_form':user_form})
   else:
     messages.success(request, "You must be logged in to access this page")
-  return render('home')
+  return redirect('home')
 
 def category_summary(request):
   categories = Category.objects.all()

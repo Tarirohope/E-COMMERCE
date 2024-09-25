@@ -7,6 +7,10 @@ from django.contrib.auth.models import User
 from .forms import SignUpForm, UpdateUserForm
 #from django import forms
 
+
+def update_password(request):
+  return render(request, 'update_password.html', {})
+
 def update_user(request):
   if request.user.is_authenticated:
     current_user = User.objects.get(id=request.user.id)

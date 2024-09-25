@@ -4,13 +4,29 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 #from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm, UpdateUserForm
+from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm
 #from django import forms
 
 
+# def update_password(request):
+#   if request.user.is_authenticated:
+#       current_user = request.user
+#       if request.method == 'POST':
+#       #DO STUFFd
+#        else:
+#         form = ChangePasswordForm(current_user)
+#         return render(request, 'update_password.html', {'form':form})
 def update_password(request):
-  return render(request, 'update_password.html', {})
-
+    if request.user.is_authenticated:
+        current_user = request.user
+        if request.method == 'POST':
+            # DO STUFF
+            pass
+        else:
+            form = ChangePasswordForm(current_user)
+            return render(request, 'update_password.html', {'form': form})
+    else:
+      messages.success(request, "You must be logged in to access this page")
 def update_user(request):
   if request.user.is_authenticated:
     current_user = User.objects.get(id=request.user.id)

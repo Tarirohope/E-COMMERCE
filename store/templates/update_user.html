@@ -15,14 +15,14 @@
         {% csrf_token %}
 
 
-        {{ user_form.as_p }}
+        {{user_form.as_p }}
 
       </br>
         
         <button type="submit" class="btn btn-secondary">Update Profile</button>
       </form>
     </br> </br></br>
-    <a href="{% url 'update_password'}" class="btn btn-success">Update Password</a>
+    <a href="{% url 'update_password'%}" class="btn btn-success">Update Password</a>
     </br>
   </br>
 </br>

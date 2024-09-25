@@ -34,7 +34,7 @@ def category(request,foo):
     products = Product.objects.filter(category=category)
     return render(request, 'category.html', {'products':products, 'category':category})
   except:
-    messages.success(request, ("There was an error trying to get the category page")),
+    messages.success(request, ("There was an error trying to get the category page"))
     return redirect('home')
 
 def product(request,pk):

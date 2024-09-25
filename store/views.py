@@ -27,6 +27,7 @@ def update_password(request):
             return render(request, 'update_password.html', {'form': form})
     else:
       messages.success(request, "You must be logged in to access this page")
+
 def update_user(request):
   if request.user.is_authenticated:
     current_user = User.objects.get(id=request.user.id)

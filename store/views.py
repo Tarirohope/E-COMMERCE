@@ -1,13 +1,25 @@
 from django.shortcuts import render, redirect
-from .models import Product, Category
+from .models import Product, Category, Profile
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 #from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm
+from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, UserInfoForm
 #from django import forms
 
-
+def update_info(request):
+  if request.user.is_authenticated:
+    current_user = Profile.objects.get(user__id=request.user.id)
+    form = UserInfoForm(request.POST or None, instance=current_user)
+    if form.is_valid():
+      form.save()
+      messages.success(request, "Your info has been updated")
+      return redirect('home')
+    
+    return render(request, 'update_info.html', {'form':form})
+  else:
+    messages.success(request, "You must be logged in to access this page!!!")
+  return redirect('home')
 # def update_password(request):
 #   if request.user.is_authenticated:
 #       current_user = request.user
@@ -87,7 +99,7 @@ def login_user(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
       login(request, user)
-      messages.success(request, ("You have been successfully logged in."))
+      messages.success(request, ("Username Created, Please Fill Out The Form Below..."))
       return redirect('home')
     else:
         messages.success(request, ("There was an error trying to log you in please try again"))
@@ -141,8 +153,8 @@ def register_user(request):
       # log in uaser
       user = authenticate(username=username, password=password)
       login(request, user)
-      messages.success(request, ("You have successfully registered your account"))
-      return redirect('home')
+      messages.success(request, ("Username Created, Please Fill Out The Form Below..."))
+      return redirect('update_info')
     else:
       messages.success(request, ("There was a problem trying to register you, please try again "))
       return redirect('register')

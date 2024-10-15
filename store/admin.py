@@ -20,8 +20,8 @@ class UserAdmin(admin.ModelAdmin):
   inlines = [ProfileInline]
   
   # unregister the old way
-  admin.site.unregister(User)
+admin.site.unregister(User)
   
   
   #reregister the new way
-  admin.site.register(User, UserAdmin)
+admin.site.register(User, UserAdmin)

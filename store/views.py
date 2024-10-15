@@ -7,6 +7,14 @@ from django.contrib.auth.models import User
 from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, UserInfoForm
 #from django import forms
 
+def search(request):
+  #Determine if the form has been filled
+  if request.method == "POST":
+      searched = request.POST['searched']
+      return render(request, "search.html", {'searched':searched})
+  else:
+    return render(request, "search.html", {})
+
 def update_info(request):
   if request.user.is_authenticated:
     current_user = Profile.objects.get(user__id=request.user.id)

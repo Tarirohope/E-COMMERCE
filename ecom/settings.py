@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'cart',
-    'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
+    'payment',
 ]
 
 MIDDLEWARE = [

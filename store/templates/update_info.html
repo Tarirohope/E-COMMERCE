@@ -11,11 +11,17 @@
 <div class="container">
   <div class="row align-center mt-5">
     <div class="col-8">
+      <strong>Billing Information</strong>
+    </br></br>
       <form method="POST" action="{% url 'update_info' %}">
         {% csrf_token %}
 
 
         {{form.as_p }}
+      </br></br></br>
+      <strong>Shipping Information</strong>
+    </br></br>
+      {{ shipping_form.as_p }}
 
       </br>
         
